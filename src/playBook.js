@@ -868,7 +868,7 @@ const PlaybookPage = () => {
   };
 
   return (
-    <Container maxWidth="xl" sx={{ mt: 4, bgcolor: '#121212', borderRadius: '8px', p: 2 }}>
+    <Container maxWidth="xl" sx={{  bgcolor: '#121212', borderRadius: '8px', p: 2 }}>
       <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar>
           <EmojiEvents sx={{ mr: 2, color: '#FFD700' }} />
