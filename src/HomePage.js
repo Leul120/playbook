@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Button, Card, CardHeader, CardContent, Typography, Grid } from '@mui/material';
 import { FaBook, FaUsers, FaTshirt, FaArrowRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
-// Simulated "Play of the Day" array
 const PlayOfTheDay = [
   "The Lorenzo Von Matterhorn",
   "The Ted Mosby",
@@ -15,9 +14,9 @@ const PlayOfTheDay = [
 
 const HomePage = () => {
   const [currentPlay, setCurrentPlay] = useState(PlayOfTheDay[0]);
+  const playerRef = useRef(null);
 
   useEffect(() => {
-    // Cycle through "Play of the Day" every 5 seconds
     const interval = setInterval(() => {
       setCurrentPlay(prev => {
         const currentIndex = PlayOfTheDay.indexOf(prev);
@@ -30,37 +29,64 @@ const HomePage = () => {
 
   useEffect(() => {
     // Load YouTube IFrame API
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    // Initialize YouTube player
-    window.onYouTubeIframeAPIReady = function () {
-      new window.YT.Player('yt-background-video', {
-  videoId: 'HdcxGbX0W_U',  // Use this video ID
-  playerVars: {
-    autoplay: 1,
-    controls: 0,
-    mute: 1,
-    loop: 1,
-    playlist: 'HdcxGbX0W_U'  // Set playlist for looping
-  },
-  events: {
-    onReady: function (event) {
-      event.target.playVideo();
+    if (!window.YT) {
+      const tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     }
-  }
-});
+
+    // Initialize or reinitialize YouTube player
+    const initPlayer = () => {
+      if (playerRef.current) {
+        playerRef.current.destroy();
+      }
+      playerRef.current = new window.YT.Player('yt-background-video', {
+        videoId: 'mpDk-BqcSYo',
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          mute: 1,
+          loop: 1,
+          playlist: 'mpDk-BqcSYo',
+          modestbranding: 1,
+          showinfo: 0,
+          rel: 0
+        },
+        events: {
+          onReady: (event) => {
+            event.target.playVideo();
+          }
+        }
+      });
+    };
+
+    if (window.YT && window.YT.Player) {
+      initPlayer();
+    } else {
+      window.onYouTubeIframeAPIReady = initPlayer;
+    }
+
+    // Cleanup function
+    return () => {
+      if (playerRef.current) {
+        playerRef.current.destroy();
+      }
     };
   }, []);
 
   return (
-    <div className='home-container'>
-      {/* YouTube Background Video */}
-      <div id="yt-background-video" className="video-iframe"></div>
+    <div className='home-container' style={{ position: 'relative', overflow: 'hidden', width: '100vw', height: '100vh' }}>
+      <div id="yt-background-video" style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        width: '100vw',
+        height: '100vh',
+        transform: 'translate(-50%, -50%)',
+        pointerEvents: 'none'
+      }}></div>
 
-      {/* Overlay Content */}
       <div className='relative z-10 p-5 bg-black bg-opacity-70 min-h-screen'>
         <motion.header
           initial={{ opacity: 0, y: -50 }}
@@ -76,7 +102,6 @@ const HomePage = () => {
           </Typography>
         </motion.header>
 
-        {/* Navigation Buttons */}
         <motion.nav
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -119,7 +144,7 @@ const HomePage = () => {
           transition={{ delay: 0.6, duration: 0.5 }}
           style={{ marginBottom: '3rem', maxWidth: '800px', margin: '0 auto' }}
         >
-          <div  className=' bg-white/5 border-2 border-yellow-400 backdrop-blur-lg mb-3 '>
+          <Card sx={{ backgroundColor: '#333', borderColor: '#fdd835', borderWidth: '2px', borderStyle: 'solid', marginBottom: '3rem' }}>
             <CardHeader
               title={<Typography variant="h6" sx={{ color: '#fdd835' }}>Play of the Day</Typography>}
             />
@@ -135,7 +160,7 @@ const HomePage = () => {
                 {currentPlay}
               </motion.p>
             </CardContent>
-          </div>
+          </Card>
         </motion.div>
 
         <motion.div
@@ -165,8 +190,7 @@ const HomePage = () => {
               { title: "Suit Up Guide", icon: FaTshirt, description: "Dress to impress with our comprehensive style guide." }
             ].map((item, index) => (
               <Grid item xs={12} md={4} key={index}>
-                <div
-                className=' bg-white/5 border-2 border-yellow-400 backdrop-blur-lg mb-3'>
+                <Card sx={{ backgroundColor: '#333', borderColor: '#fdd835', borderWidth: '2px', borderStyle: 'solid' }}>
                   <CardHeader
                     title={
                       <Typography variant="h6" sx={{ color: '#fdd835', display: 'flex', alignItems: 'center' }}>
@@ -178,7 +202,7 @@ const HomePage = () => {
                   <CardContent>
                     <Typography className='text-slate-400'>{item.description}</Typography>
                   </CardContent>
-                </div>
+                </Card>
               </Grid>
             ))}
           </Grid>
