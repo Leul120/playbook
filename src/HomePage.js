@@ -144,7 +144,7 @@ const HomePage = () => {
           transition={{ delay: 0.6, duration: 0.5 }}
           style={{ marginBottom: '3rem', maxWidth: '800px', margin: '0 auto' }}
         >
-          <div className='bg-white/5 backdrop-blur-lg border-2 border-yellow-500 '>
+          <div className='bg-white/5 backdrop-blur-lg border-2 border-yellow-500 mb-3'>
             <CardHeader
               title={<Typography variant="h6" sx={{ color: '#fdd835' }}>Play of the Day</Typography>}
             />
@@ -190,7 +190,7 @@ const HomePage = () => {
               { title: "Suit Up Guide", icon: FaTshirt, description: "Dress to impress with our comprehensive style guide." }
             ].map((item, index) => (
               <Grid item xs={12} md={4} key={index}>
-                <Card className='bg-white/5 border-2 border-yellow-500 '>
+                <div className='bg-white/5 backdrop-blur-lg border-2 border-yellow-500 '>
                   <CardHeader
                     title={
                       <Typography variant="h6" sx={{ color: '#fdd835', display: 'flex', alignItems: 'center' }}>
@@ -202,7 +202,7 @@ const HomePage = () => {
                   <CardContent>
                     <Typography className='text-slate-400'>{item.description}</Typography>
                   </CardContent>
-                </Card>
+                </div>
               </Grid>
             ))}
           </Grid>
