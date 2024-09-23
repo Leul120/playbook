@@ -592,7 +592,7 @@ const LegendaryStoriesPage = () => {
   };
 
   return (
-    <Container maxWidth="xl" sx={{ mt: 4, bgcolor: '#181818', color: '#FFD700', minHeight: '100vh', padding: '20px' }}>
+    <Container maxWidth="xl" sx={{ bgcolor: '#181818', color: '#FFD700', minHeight: '100vh', padding: '20px' }}>
       <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar>
           <EmojiEvents sx={{ mr: 2, color: '#FFD700' }} />
