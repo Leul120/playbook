@@ -143,7 +143,7 @@ const HomePage = () => {
       </motion.div>
 
       {/* Modal for YouTube Video */}
-      <Modal
+      <Card
         open={open}
         sx={{
           position: 'fixed',
@@ -153,7 +153,7 @@ const HomePage = () => {
           alignItems: 'flex-start',
           justifyContent: 'flex-end',
           zIndex: 9999,
-          pointerEvents: 'none',  // Disable pointer events for the modal
+          // pointerEvents: 'none',  // Disable pointer events for the modal
         }}
       >
         <div style={{ backgroundColor: '#000', padding: '20px', borderRadius: '8px', pointerEvents: 'auto' }}>
@@ -167,7 +167,7 @@ const HomePage = () => {
             allowFullScreen
           ></iframe>
         </div>
-      </Modal>
+      </Card>
     </div>
   );
 };
