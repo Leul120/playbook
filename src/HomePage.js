@@ -69,7 +69,7 @@ const HomePage = () => {
 
     // Cleanup function
     return () => {
-      if (playerRef.current) {
+      if (playerRef.current) {z
         playerRef.current.destroy();
       }
     };
@@ -144,7 +144,8 @@ const HomePage = () => {
           transition={{ delay: 0.6, duration: 0.5 }}
           style={{ marginBottom: '3rem', maxWidth: '800px', margin: '0 auto' }}
         >
-          <Card sx={{ backgroundColor: '#333', borderColor: '#fdd835', borderWidth: '2px', borderStyle: 'solid', marginBottom: '3rem' }}>
+          <div
+          className='bg-white/5 border-2 border-yellow-500 mb-3'>
             <CardHeader
               title={<Typography variant="h6" sx={{ color: '#fdd835' }}>Play of the Day</Typography>}
             />
@@ -160,7 +161,7 @@ const HomePage = () => {
                 {currentPlay}
               </motion.p>
             </CardContent>
-          </Card>
+          </div>
         </motion.div>
 
         <motion.div
@@ -190,7 +191,7 @@ const HomePage = () => {
               { title: "Suit Up Guide", icon: FaTshirt, description: "Dress to impress with our comprehensive style guide." }
             ].map((item, index) => (
               <Grid item xs={12} md={4} key={index}>
-                <Card sx={{ backgroundColor: '#333', borderColor: '#fdd835', borderWidth: '2px', borderStyle: 'solid' }}>
+                <Card className='bg-white/5 border-2 border-yellow-500 '>
                   <CardHeader
                     title={
                       <Typography variant="h6" sx={{ color: '#fdd835', display: 'flex', alignItems: 'center' }}>
