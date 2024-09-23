@@ -14,7 +14,7 @@ const PlayOfTheDay = [
 
 const HomePage = () => {
   const [currentPlay, setCurrentPlay] = useState(PlayOfTheDay[0]);
-  const [open, setOpen] = useState(true);  // Set to true to always show the modal
+  const [open] = useState(true);  // Set to true to always show the modal
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,7 +27,7 @@ const HomePage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleClose = () => setOpen(false);
+  
 
   return (
     <div className='p-5 bg-slate-900 min-h-screen'>
@@ -147,7 +147,6 @@ const HomePage = () => {
       {/* Modal for YouTube Video */}
       <Modal
         open={open}
-        onClose={handleClose}
         sx={{
           position: 'fixed',
           top: 20,
