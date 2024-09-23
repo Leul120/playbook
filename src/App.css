@@ -1,0 +1,23 @@
+.home-container {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.video-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* Ensure the video doesn't interfere with user input */
+  z-index: 0;
+}
+
+.overlay-content {
+  position: relative;
+  z-index: 10;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
