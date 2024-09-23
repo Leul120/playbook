@@ -46,7 +46,8 @@ const HomePage = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.5 }}
-        style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '3rem' }}
+        // style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '3rem' }}
+        className='flex flex-wrap justify-center gap-2 mb-3'
       >
         
           <motion.div  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} >
