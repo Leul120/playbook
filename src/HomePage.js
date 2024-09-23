@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Button, Card, CardHeader, CardContent, Typography, Grid, Container, Modal } from '@mui/material';
+import { Button, Card, CardHeader, CardContent, Typography, Grid, Modal } from '@mui/material';
 import { FaBook, FaUsers, FaTshirt, FaArrowRight, FaPlay } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ const PlayOfTheDay = [
 
 const HomePage = () => {
   const [currentPlay, setCurrentPlay] = useState(PlayOfTheDay[0]);
-  const [open] = useState(true);  // Set to true to always show the modal
+  const [open] = useState(true);  // Modal is always open
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -26,8 +26,6 @@ const HomePage = () => {
 
     return () => clearInterval(interval);
   }, []);
-
-  
 
   return (
     <div className='p-5 bg-slate-900 min-h-screen'>
@@ -154,10 +152,11 @@ const HomePage = () => {
           display: 'flex',
           alignItems: 'flex-start',
           justifyContent: 'flex-end',
-          zIndex: 9999
+          zIndex: 9999,
+          pointerEvents: 'none',  // Disable pointer events for the modal
         }}
       >
-        <div style={{ backgroundColor: '#000', padding: '20px', borderRadius: '8px' }}>
+        <div style={{ backgroundColor: '#000', padding: '20px', borderRadius: '8px', pointerEvents: 'auto' }}>
           <iframe
             width="300"  // Adjust width for a smaller pop-up
             height="169" // Adjust height for a smaller pop-up
