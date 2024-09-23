@@ -69,7 +69,7 @@ const HomePage = () => {
 
     // Cleanup function
     return () => {
-      if (playerRef.current) {z
+      if (playerRef.current) {
         playerRef.current.destroy();
       }
     };
