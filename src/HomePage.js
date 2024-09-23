@@ -144,7 +144,7 @@ const HomePage = () => {
           transition={{ delay: 0.6, duration: 0.5 }}
           style={{ marginBottom: '3rem', maxWidth: '800px', margin: '0 auto' }}
         >
-          <div className='bg-white/5 border-2 border-yellow-500 mb-3'>
+          <div className='bg-white/5 backdrop-blur-lg border-2 border-yellow-500 mb-3'>
             <CardHeader
               title={<Typography variant="h6" sx={{ color: '#fdd835' }}>Play of the Day</Typography>}
             />
