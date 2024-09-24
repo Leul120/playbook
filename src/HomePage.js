@@ -44,33 +44,33 @@ const HomePage = () => {
       </motion.header>
 
       <motion.nav
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-        className='flex flex-wrap justify-center gap-2 mb-3'
-      >
-        {/* Navigation Buttons */}
-        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-          <Link to='/play'><Button variant="outlined" sx={{ color: '#fff', borderColor: '#fdd835' }}>
-            The Playbook
-          </Button></Link>
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.3, duration: 0.5 }}
+    // style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '3rem' }}
+    className='flex flex-wrap justify-center gap-2 mb-3'
+  >
+    
+      <motion.div  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} >
+        <Link to='/play'><Button variant="outlined" sx={{ color: '#fff', borderColor: '#fdd835', '&:hover': { backgroundColor: '#fdd835', color: '#1a1a1a' } }}>
+          The Playbook
+        </Button></Link>
         </motion.div>
-        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-          <Link to='/bro'><Button variant="outlined" sx={{ color: '#fff', borderColor: '#fdd835' }}>
-            The Bro Code
-          </Button></Link>
-        </motion.div>
-        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-          <Link to='/suit'><Button variant="outlined" sx={{ color: '#fff', borderColor: '#fdd835' }}>
-            Suit Up Tips
-          </Button></Link>
-        </motion.div>
-        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-          <Link to='/story'><Button variant="outlined" sx={{ color: '#fff', borderColor: '#fdd835' }}>
-            Legendary Stories
-          </Button></Link>
-        </motion.div>
-      </motion.nav>
+        <motion.div  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} >
+        <Link to='/bro'><Button variant="outlined" sx={{ color: '#fff', borderColor: '#fdd835', '&:hover': { backgroundColor: '#fdd835', color: '#1a1a1a' } }}>
+          The Bro Code
+        </Button></Link></motion.div>
+        <motion.div  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} >
+        <Link to='/suit'><Button variant="outlined" sx={{ color: '#fff', borderColor: '#fdd835', '&:hover': { backgroundColor: '#fdd835', color: '#1a1a1a' } }}>
+          Suit Up Tips
+        </Button></Link></motion.div>
+      <motion.div  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} >
+        <Link to='/story'><Button variant="outlined" sx={{ color: '#fff', borderColor: '#fdd835', '&:hover': { backgroundColor: '#fdd835', color: '#1a1a1a' } }}>
+          Legendary Stories
+        </Button></Link></motion.div>
+    
+  </motion.nav>
+
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -104,12 +104,11 @@ const HomePage = () => {
         style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginBottom: '3rem' }}
       >
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Link to='/legendary'>
-            <Button variant="outlined" sx={{ borderColor: '#fdd835', color: '#fdd835' }}>
-              Take the Legendary Quiz <FaArrowRight style={{ marginLeft: '0.5rem' }} />
-            </Button>
-          </Link>
-        </motion.div>
+      <Link to='/legendary'><Button variant="outlined" sx={{ borderColor: '#fdd835', color: '#fdd835', '&:hover': { backgroundColor: '#fdd835', color: '#1a1a1a' } }}>
+        Take the Legendary Quiz <FaArrowRight style={{ marginLeft: '0.5rem' }} />
+      </Button></Link>
+    </motion.div>
+
       </motion.div>
 
       <motion.div
@@ -117,7 +116,7 @@ const HomePage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.5 }}
       >
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container spacing={4} justifyContent="center" className='xl:mb-0 mb-48'>
           {[
             { title: "Master The Playbook", icon: FaBook, description: "Learn the ultimate techniques to win at the game of love." },
             { title: "Join The Brotherhood", icon: FaUsers, description: "Connect with fellow bros and share legendary stories." },
@@ -145,16 +144,17 @@ const HomePage = () => {
       {/* Modal for YouTube Video */}
       <Card
         open={open}
-        sx={{
-          position: 'fixed',
-          top: 20,
-          right: 20,
-          display: 'flex',
-          alignItems: 'flex-start',
-          justifyContent: 'flex-end',
-          zIndex: 9999,
-          // pointerEvents: 'none',  // Disable pointer events for the modal
-        }}
+        // sx={{
+        //   position: 'fixed',
+        //   top: 20,
+        //   right: 20,
+        //   display: 'flex',
+        //   alignItems: 'flex-start',
+        //   justifyContent: 'flex-end',
+        //   zIndex: 9999,
+        //   pointerEvents: 'none',  // Disable pointer events for the modal
+        // }}
+        className='fixed bottom-0 h-48 xl:w-80 flex items-center xl:top-6 xl:right-2'
       >
         <div style={{ backgroundColor: '#000', padding: '20px', borderRadius: '8px', pointerEvents: 'auto' }}>
           <iframe
