@@ -116,7 +116,7 @@ const HomePage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.5 }}
       >
-        <Grid container spacing={4} justifyContent="center" className='xl:mb-0 mb-48'>
+        <Grid container spacing={4} justifyContent="center" className='mb-4 '>
           {[
             { title: "Master The Playbook", icon: FaBook, description: "Learn the ultimate techniques to win at the game of love." },
             { title: "Join The Brotherhood", icon: FaUsers, description: "Connect with fellow bros and share legendary stories." },
@@ -142,8 +142,7 @@ const HomePage = () => {
       </motion.div>
 
       {/* Modal for YouTube Video */}
-      <Card
-        open={open}
+      <div
         // sx={{
         //   position: 'fixed',
         //   top: 20,
@@ -154,9 +153,9 @@ const HomePage = () => {
         //   zIndex: 9999,
         //   pointerEvents: 'none',  // Disable pointer events for the modal
         // }}
-        className='fixed bottom-0 h-48 xl:w-80 flex items-center xl:top-6 xl:right-2'
+        className='xl:fixed bottom-0 h-[169px] justify-center bg-transparent  flex items-center xl:top-6 xl:right-2'
       >
-        <div style={{ backgroundColor: '#000', padding: '20px', borderRadius: '8px', pointerEvents: 'auto' }}>
+        <div style={{ backgroundColor: '#000', pointerEvents: 'auto' }}>
           <iframe
             width="300"  // Adjust width for a smaller pop-up
             height="169" // Adjust height for a smaller pop-up
@@ -167,7 +166,7 @@ const HomePage = () => {
             allowFullScreen
           ></iframe>
         </div>
-      </Card>
+      </div>
     </div>
   );
 };
